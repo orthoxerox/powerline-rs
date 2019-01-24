@@ -12,6 +12,7 @@ clap = "2.32.0"
 [dependencies]
 clap = "2.32.0"
 dirs = "1.0.4"
+unicode-segmentation = "1.1.0"
 
 [dependencies.chrono]
 optional = true

@@ -4,6 +4,7 @@
 #[cfg(feature = "users")] extern crate users;
 #[macro_use] extern crate clap;
 extern crate dirs;
+extern crate unicode_segmentation;
 
 mod cli;
 mod format;
@@ -99,6 +100,7 @@ fn main() {
     for module in modules {
         match module {
             Module::Cwd => segments::segment_cwd(&mut p, cwd_max_depth, cwd_max_dir_size),
+            Module::CwdBrief => segments::segment_brief(&mut p, cwd_max_dir_size),
             Module::Git => { #[cfg(feature = "git2")] segments::segment_git(&mut p) },
             Module::GitStage => { #[cfg(feature = "git2")] segments::segment_gitstage(&mut p) },
             Module::Host => segments::segment_host(&mut p),

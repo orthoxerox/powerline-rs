@@ -2,6 +2,7 @@ use std::str::FromStr;
 
 pub const ALL: &[&str] = &[
     "cwd",
+    "cwdbrief",
     "git",
     "gitstage",
     "host",
@@ -19,6 +20,7 @@ pub const ALL: &[&str] = &[
 #[derive(PartialEq, Eq)]
 pub enum Module {
     Cwd,
+    CwdBrief,
     Git,
     GitStage,
     Host,
@@ -38,6 +40,7 @@ impl FromStr for Module {
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         match s {
             "cwd"        => Ok(Module::Cwd),
+            "cwdbrief"   => Ok(Module::CwdBrief),
             "git"        => Ok(Module::Git),
             "gitstage"   => Ok(Module::GitStage),
             "host"       => Ok(Module::Host),
@@ -50,7 +53,7 @@ impl FromStr for Module {
             "time"       => Ok(Module::Time),
             "user"       => Ok(Module::User),
             "virtualenv" => Ok(Module::VirtualEnv),
-            _          => Err(())
+            _            => Err(())
         }
     }
 }
